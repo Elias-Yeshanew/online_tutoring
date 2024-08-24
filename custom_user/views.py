@@ -31,7 +31,7 @@ def login_view(request):
                 if user.is_teacher:
                     return redirect('teachers_home')
                 if user.is_superuser:
-                    return redirect('/admin/')
+                    return redirect('admin_dashboard')
                 if user.is_student:
                     return redirect('students_home')
                 if user.is_family:

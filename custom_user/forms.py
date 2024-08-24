@@ -6,7 +6,7 @@ class CustomUserCreattionForm(UserCreationForm):
     ROLE_CHOICES =[
         ('student', 'student'),
         ('teacher', 'teacher'),
-        ('admin', 'admin'),
+        ('family', 'family'),
     ]
 
     role= forms.ChoiceField(choices=ROLE_CHOICES)
@@ -20,17 +20,19 @@ class CustomUserCreattionForm(UserCreationForm):
         role = self.cleaned_data['role']
 
         # Reset all roles to False
-        user.is_admin = False
+        # user.is_admin = False
         user.is_teacher = False
         user.is_student = False
+        user.is_family = False
 
         # Set the selected role to True
-        if role == 'admin':
-            user.is_admin = True
+        if role == 'family':
+            user.is_family = True
         elif role == 'teacher':
             user.is_teacher = True
         elif role == 'student':
             user.is_student = True
+       
 
         if commit:
             user.save()

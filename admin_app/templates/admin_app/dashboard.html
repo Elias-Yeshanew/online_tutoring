@@ -1,0 +1,7 @@
+<!-- admin_app/templates/admin_app/dashboard.html -->
+<h1>Admin Dashboard</h1>
+<p>Welcome, {{ user.username }}!</p>
+<ul>
+    <li><a href="{% url 'user_management' %}">Manage Users</a></li>
+    <!-- Add more admin-specific links here -->
+</ul>

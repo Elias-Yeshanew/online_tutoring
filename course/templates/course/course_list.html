@@ -1,0 +1,29 @@
+<!-- course/templates/course/course_list.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Course List</title>
+    </head>
+    <body>
+        <h1>Courses</h1>
+        <table>
+            <tr>
+                <th>Course Title </th>
+                <th> Course category</th>
+                <th>Action</th>
+            </tr>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.title }}</td>
+                <td>{{ course.category }}</td>
+                <td>
+                    <a href="{% url 'course_update' course.pk %}">Edit</a> 
+                    <a href="{% url 'course_delete' course.pk %}">Delete</a>
+                </td>
+            </tr>
+            
+            {% endfor %}
+      
+    </body>
+</html>

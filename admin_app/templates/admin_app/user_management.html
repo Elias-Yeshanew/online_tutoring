@@ -1,0 +1,28 @@
+<!-- admin_app/templates/admin_app/user_management.html -->
+<h1>User Management</h1>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+            {% if user.is_superuser %} Admin {% elif user.is_teacher %} Teacher
+            {%elif user.is_student %} Student {% elif user.is_family %} Family
+            {%endif %}
+        </td>
+        <td>
+            <!-- Add actions like edit, delete here -->
+            <a href="">Edit</a>
+            <a href="{% url 'delete_user' user.pk %}">delete</a>
+            <a href="">update</a>
+            <a href="">detail</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
