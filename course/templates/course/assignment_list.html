@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <th>Assignment Title</th>
+        <th>Course Name</th>
+        <th>Posted date</th>
+        <th>Submission date</th>
+        <th>Updated date</th>
+        <th>Teacher name</th>
+        <th>Action</th>
+    </tr>
+    {% for assignment in assignments %}
+    <tr>
+        <td>{{ assignment.title }}</td>
+        <td>{{ assignment.course }}</td>
+        <td>{{ assignment.created_at }}</td>
+        <td>{{ assignment.due_date }}</td>
+        <td>{{ assignment.updated_at }}</td>
+
+        <td>
+            <a href="{% url 'update_assignment' assignment.pk %}">Edit</a>
+            <a href="{% url 'delete_assignment' assignment.pk %}">Delete</a>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>

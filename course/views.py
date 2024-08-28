@@ -38,3 +38,4 @@ def course_delete(request, pk):
         course.delete()
         return redirect('course_list')
     return render(request, 'course/course_confirm_delete.html', {'course':course})
+

@@ -28,3 +28,18 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return f"{self.student.user.username} enrolled in {self.course.title} with {self.teacher.user.username}"
+
+
+
+class Assignment(models.Model):
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    due_date = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now = True)
+    teacher = models.ForeignKey(Teachers, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+

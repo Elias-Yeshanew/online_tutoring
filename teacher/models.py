@@ -1,6 +1,7 @@
 from django.db import models
 from custom_user.models import CustomUser
 
+
 class Teachers(models.Model):
     user= models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
     # subjects=models.ManyToManyField('Subject')
@@ -10,3 +11,4 @@ class Teachers(models.Model):
     
     class Meta:
         verbose_name_plural = 'Teachers'
+

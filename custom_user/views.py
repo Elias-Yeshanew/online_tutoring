@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import CustomUserCreattionForm, CustomUser, CustomUserUpdateForm
+from .forms import CustomUserCreattionForm, CustomUserUpdateForm
+from .models import  CustomUser
 
 def home(request):
     return render(request, 'custom_user/index.html')
