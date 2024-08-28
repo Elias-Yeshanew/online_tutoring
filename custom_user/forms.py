@@ -1,19 +1,20 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 
-class CustomUserCreattionForm(UserCreationForm):
-    ROLE_CHOICES =[
+ROLE_CHOICES =[
         ('student', 'student'),
         ('teacher', 'teacher'),
         ('family', 'family'),
     ]
 
-    role= forms.ChoiceField(choices=ROLE_CHOICES)
+class CustomUserCreattionForm(UserCreationForm):
+    
+    role = forms.ChoiceField(choices=ROLE_CHOICES)
 
     class Meta:
         model=CustomUser
-        fields=('username','email', 'role', 'password1', 'password2')
+        fields=['username','email', 'role', 'password1', 'password2']
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -32,8 +33,16 @@ class CustomUserCreattionForm(UserCreationForm):
             user.is_teacher = True
         elif role == 'student':
             user.is_student = True
-       
 
         if commit:
             user.save()
         return user
+
+class CustomUserUpdateForm(UserChangeForm):
+    
+    role = forms.ChoiceField(choices=ROLE_CHOICES)
+
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'role', 'password']
+    

@@ -18,9 +18,8 @@
         </td>
         <td>
             <!-- Add actions like edit, delete here -->
-            <a href="">Edit</a>
             <a href="{% url 'delete_user' user.pk %}">delete</a>
-            <a href="">update</a>
+            <a href="{% url 'update_user' user.pk %}">Update</a>
             <a href="">detail</a>
         </td>
     </tr>

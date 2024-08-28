@@ -1,3 +1,5 @@
+
+from django.utils import timezone
 from django.db import models
 from custom_user.models import CustomUser
 
@@ -6,7 +8,7 @@ class Admins(models.Model):
     department = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.user.username
