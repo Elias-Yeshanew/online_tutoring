@@ -2,7 +2,7 @@
 from django.db import models
 from teacher.models import Teachers
 from student.models import Students
-from family.models import Families
+
 
 class CourseCategories(models.Model):
     name = models.CharField(max_length=100)
@@ -20,6 +20,7 @@ class Courses(models.Model):
 
 
 class Enrollment(models.Model):
+    from family.models import Families
     student = models.ForeignKey(Students, on_delete=models.CASCADE)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teachers, on_delete=models.CASCADE)

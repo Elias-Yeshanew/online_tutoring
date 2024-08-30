@@ -31,7 +31,6 @@ def create_assignment(request):
 
 def update_assignment(request, pk):
     assignment = get_object_or_404(Assignment, pk=pk)
-    print(assignment)
     if request.method == 'POST':
         form = AssignmentForm(request.POST, instance=assignment)
         if form.is_valid():
