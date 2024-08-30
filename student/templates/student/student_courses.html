@@ -1,0 +1,4 @@
+{% for course, teacher in courses_with_teachers %}
+<h3>{{ course.title }}</h3>
+<p>Teacher: {{ teacher.user.username }}</p>
+{% endfor %}

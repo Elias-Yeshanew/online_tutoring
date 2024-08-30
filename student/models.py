@@ -1,10 +1,12 @@
 from django.db import models
 from custom_user.models import CustomUser
+# from family.models import Families
 
 
 
 class Students(models.Model):
     user=models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    # student_family = models.ForeignKey(Families, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username

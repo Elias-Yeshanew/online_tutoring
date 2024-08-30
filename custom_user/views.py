@@ -12,6 +12,10 @@ def register(request):
         form=CustomUserCreattionForm(request.POST)
         if form.is_valid():
             user = form.save()
+            if role == 'family':
+                related_student_id = request.POST.get('related_student')
+                related_student = Students.objects.get(id=related_student_id)
+                Families.objects.create(user=user, related_student=related_student)
             # login(request, user)
             return redirect('login')
     else:

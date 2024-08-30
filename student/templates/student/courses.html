@@ -1,0 +1,5 @@
+{% for course, teacher, family in courses_with_details %}
+<p>Course: {{ course.title }}</p>
+<p>Teacher: {{ teacher.user.username }}</p>
+<p>Family: {{ family.user.username }}</p>
+{% endfor %}
