@@ -14,14 +14,20 @@
                 <th>Action</th>
             </tr>
             {% for course in courses %}
-            <tr>
-                <td>{{ course.title }}</td>
-                <td>{{ course.category }}</td>
-                <td>
-                    <a href="{% url 'course_update' course.pk %}">Edit</a> 
-                    <a href="{% url 'course_delete' course.pk %}">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.category }}</td>
+                    <td>
+                        {% if user.is_teacher or user.is_superuser%}
+                            <a href="{% url 'course_update' course.pk %}">Edit</a> 
+                            <a href="{% url 'course_delete' course.pk %}">Delete</a>
+                        {% endif %}
+                    
+                     {% if user.is_student %}
+                        <a href="{% url 'enroll_course' course.pk%}">Enroll</a>
+                    {% endif %}
+                    </td>
+                </tr>
             
             {% endfor %}
       

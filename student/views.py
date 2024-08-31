@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from course.models import Assignment
 from .forms import SubmitAssignmentForm
 from .models import Students
-from course.models import Enrollment
+from course.models import Enrollment, CourseStudent, Courses
 
 def student_view(request):
     return render(request, 'student/index.html')
@@ -28,33 +28,6 @@ def enroll_student_in_course(request, course_id):
     
     return redirect('student_courses')  # Or any other appropriate redirect
 
-
-# def student_courses(request):
-#     # Assuming the student is logged in
-#     student = get_object_or_404(Students, user=request.user)  # This assumes the request.user is a Student
-#     enrollments = Enrollment.objects.filter(student=student)
-#     courses = [enrollment.course for enrollment in enrollments]
-
-
-#     context = {
-#         'courses': courses,
-#     }
-
-#     print(context)
-#     return render(request, 'student/courses.html', context)
-
-def student_courses(request):
-    student = get_object_or_404(Students, user=request.user)
-    enrollments = Enrollment.objects.filter(student=student).select_related('student', 'course', 'teacher', 'student_family')
-    
-    courses_with_details = [(enrollment.course, enrollment.teacher, enrollment.student_family) for enrollment in enrollments]
-
-    context = {
-        'courses_with_details': courses_with_details,
-    }
-    print(context)
-
-    return render(request, 'student/student_courses.html', context)
 
 def submit_assignment(request, assignment_id):
     assignment  = get_object_or_404(Assignment, id=assignment_id)

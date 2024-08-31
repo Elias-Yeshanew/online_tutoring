@@ -19,17 +19,6 @@ class Courses(models.Model):
         return self.title
 
 
-# class Enrollment(models.Model):
-
-#     student = models.ForeignKey(Students, on_delete=models.CASCADE)
-#     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
-#     teacher = models.ForeignKey(Teachers, on_delete=models.CASCADE)
-    
-#     enrollment_date = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         return f"{self.student.user.username} enrolled in {self.course.title} with {self.teacher.user.username}"
-
 class CourseTeacher(models.Model):
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teachers, on_delete=models.CASCADE)
