@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from course.forms import AssignmentForm
-from course.models import Assignment
+from course.models import Assignment, CourseTeacher
+from .models import Teachers
 
 def TeachersHome(request):
     return render(request, 'teacher/index.html')
@@ -57,3 +58,12 @@ def delete_assignment(request, pk):
     return render(request, 'course/delete_assignment.html', context)
 
 
+def teacher_courses(request):
+    teacher = get_object_or_404(Teachers, user = request.user)
+    teacher_courses = CourseTeacher.objects.filter(teacher = teacher).select_related('course')
+
+    context = {
+        'courses':[cs.course for cs in teacher_courses],
+    }
+
+    return render(request, 'teacher/courses.html', context)
