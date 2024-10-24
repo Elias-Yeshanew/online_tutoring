@@ -18,3 +18,4 @@ def create_user_profile(sender, instance, created, **kwargs):
             Admins.objects.create(user=instance)
         elif instance.is_family:
             Families.objects.create(user=instance)
+

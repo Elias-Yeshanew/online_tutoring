@@ -7,21 +7,46 @@ from .models import  CustomUser
 def home(request):
     return render(request, 'custom_user/index.html')
 
+# def register(request):
+#     if request.method=='POST':
+#         form=CustomUserCreattionForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+
+#             role = form.cleaned_data.get('role', 'default_role')
+
+#             user.role = role
+#             user.save()
+#             messages.seccess(request, "registeration seccessful.")
+#             # if role == 'family':
+#             #     related_student_id = request.POST.get('related_student')
+#             #     related_student = Students.objects.get(id=related_student_id)
+#             #     Families.objects.create(user=user, related_student=related_student)
+#             # login(request, user)
+#             return redirect('login')
+#     else:
+#         form=CustomUserCreattionForm()
+    
+#     return render(request, 'custom_user/register.html', {'form': form})
+
+from django.contrib import messages  # Make sure to import this for success message
+
 def register(request):
-    if request.method=='POST':
-        form=CustomUserCreattionForm(request.POST)
+    if request.method == 'POST':
+        form = CustomUserCreattionForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            if role == 'family':
-                related_student_id = request.POST.get('related_student')
-                related_student = Students.objects.get(id=related_student_id)
-                Families.objects.create(user=user, related_student=related_student)
-            # login(request, user)
+            user = form.save(commit=False)
+
+            # The role has already been handled in the form's save() method
+            user.save()
+            messages.success(request, "Registration successful.")  # Fix typo (seccessful -> successful)
+
             return redirect('login')
     else:
-        form=CustomUserCreattionForm()
-    
+        form = CustomUserCreattionForm()
+
     return render(request, 'custom_user/register.html', {'form': form})
+
 
 def login_view(request):
     if request.method == 'POST':
