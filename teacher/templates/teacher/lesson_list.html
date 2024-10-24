@@ -1,0 +1,34 @@
+
+{% block content %}
+  <h1>Lessons You Have Created</h1>
+
+  {% if lessons %}
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Course</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lesson in lessons %}
+          <tr>
+            <td>{{ lesson.title }}</td>
+            <td>{{ lesson.course.course.title }}</td>  <!-- Access the course title -->
+            <td>{{ lesson.created_at|date:"Y-m-d H:i" }}</td>
+            <td> 
+                <a href="{% url 'lesson_detail' lesson.id %}">View</a>
+              <a href="{% url 'update_lesson' lesson.id %}">Edit</a>
+              
+              <a href="{% url 'delete_lesson' lesson.id %}">Delete</a> 
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You have not created any lessons yet.</p>
+  {% endif %}
+{% endblock %}

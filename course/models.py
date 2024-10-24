@@ -12,7 +12,7 @@ class CourseCategories(models.Model):
 
 class Courses(models.Model):
     title = models.CharField(max_length=200)
-    category = models.ForeignKey(CourseCategories, on_delete=models.CASCADE)
+    category = models.ForeignKey(CourseCategories, on_delete=models.CASCADE, null=False, default = 1)
     description = models.TextField()
 
     def __str__(self):
@@ -30,6 +30,25 @@ class CourseTeacher(models.Model):
 
     def __str__(self):
         return f"{self.course.title} - {self.teacher.user.username} ({self.session_identifier})"
+
+class Lesson(models.Model):
+    course = models.ForeignKey(CourseTeacher,  on_delete=models.CASCADE, related_name = "lessons")
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    vidio_url = models.URLField(blank = True, null=True)
+    order = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True) 
+
+    class Meta:
+        verbose_name = ("Lesson")
+        verbose_name_plural = ("Lessons")
+
+    def __str__(self):
+        return self.title
+
+    # def get_absolute_url(self):
+    #     return reverse("Lesson_detail", kwargs={"pk": self.pk})
 
 
 class CourseStudent(models.Model):

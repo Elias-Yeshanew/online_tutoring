@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .profile-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .profile-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .profile-details {
+            list-style-type: none;
+            padding: 0;
+        }
+        .profile-details li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .profile-details li:last-child {
+            border-bottom: none;
+        }
+        .profile-details strong {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Welcome, {{ username }}</h1>
+        </div>
+
+        <ul class="profile-details">
+            <li><strong>Full Name:</strong> {{ profile.firstName }} {{ profile.lastName }}</li>
+            <li><strong>Email:</strong> {{ profile.user.email }}</li>
+            <li><strong>Phone Number:</strong> {{ profile.phoneNumber }}</li>
+            <li><strong>Department:</strong> {{ profile.department }}</li>
+            <li><strong>Subjects Taught:</strong> {{ profile.subjectTaught }}</li>
+            <!-- Add any other profile details you want to display -->
+        </ul>
+    </div>
+
+</body>
+</html>

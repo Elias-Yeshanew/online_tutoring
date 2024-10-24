@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ lesson.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .lesson-details {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .lesson-details p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .lesson-details a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ lesson.title }}</h1>
+
+    <div class="lesson-details">
+        <h3>Description:</h3>
+        <p>{{ lesson.content }}</p>
+
+        {% if lesson.vidio_url %}
+        <h3>Video Lesson:</h3>
+        <a href="{{ lesson.vidio_url }}" target="_blank">Watch Video</a>
+        {% endif %}
+
+        <p><strong>Created at:</strong> {{ lesson.created_at }}</p>
+        <p><strong>Last updated:</strong> {{ lesson.updated_at }}</p>
+
+        <a href="{% url 'view_lessons' %}">Back to Lessons List</a>
+    </div>
+
+</body>
+</html>
