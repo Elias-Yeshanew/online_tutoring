@@ -50,7 +50,6 @@ class Lesson(models.Model):
     # def get_absolute_url(self):
     #     return reverse("Lesson_detail", kwargs={"pk": self.pk})
 
-
 class CourseStudent(models.Model):
     student = models.ForeignKey(Students, on_delete=models.CASCADE)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
@@ -58,8 +57,6 @@ class CourseStudent(models.Model):
 
     def __str__(self):
         return f"{self.student.user.username} enrolled in {self.course.title}"
-
-
 
 class Assignment(models.Model):
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)

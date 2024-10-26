@@ -13,7 +13,7 @@ def assignment_list(request):
         'assignments':assignments
         }
     return render(request, 'course/assignment_list.html', context)
-    
+    teacher/views.py
 def create_assignment(request):
     if request.method == 'POST':
         form = AssignmentForm(request.POST)

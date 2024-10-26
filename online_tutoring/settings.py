@@ -135,10 +135,12 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 
-
-
-# MEDIA_ROOT is the absolute filesystem path to the directory where files are uploaded.
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# MEDIA_URL is the URL that will serve the media files.
+MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+
+# # MEDIA_ROOT is the absolute filesystem path to the directory where files are uploaded.
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# # MEDIA_URL is the URL that will serve the media files.
+# MEDIA_URL = '/media/'
