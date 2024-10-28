@@ -1,8 +1,5 @@
 from django.db import models
 from custom_user.models import CustomUser
-# from family.models import Families
-
-
 
 class Students(models.Model):
     user=models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
@@ -14,7 +11,6 @@ class Students(models.Model):
     class Meta:
         verbose_name_plural = 'Students'
     
-
 class SubmittedAssignment(models.Model):
     
     from course.models import Assignment

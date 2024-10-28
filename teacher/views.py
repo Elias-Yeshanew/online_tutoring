@@ -14,6 +14,7 @@ def assignment_list(request):
         }
     return render(request, 'course/assignment_list.html', context)
     teacher/views.py
+
 def create_assignment(request):
     if request.method == 'POST':
         form = AssignmentForm(request.POST)
@@ -30,7 +31,6 @@ def create_assignment(request):
     }
     return render(request, 'course/create_assignment.html', context)
 
-
 def update_assignment(request, pk):
     assignment = get_object_or_404(Assignment, pk=pk)
     if request.method == 'POST':
@@ -45,7 +45,6 @@ def update_assignment(request, pk):
         'form':form
     }
     return render(request, 'course/update_assignment.html', context)
-
 
 def delete_assignment(request, pk):
     assignment = get_object_or_404(Assignment, pk=pk)
@@ -69,8 +68,6 @@ def delete_lesson(request, lesson_id):
     }
 
     return render(request, 'teacher/delete_lesson.html', context)
-
-
 
 def teacher_courses(request):
     teacher = get_object_or_404(Teachers, user = request.user)

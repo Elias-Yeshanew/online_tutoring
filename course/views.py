@@ -18,7 +18,6 @@ def course_create(request):
         form = CourseForm()
     return render(request, 'course/course_form.html', {'form':form})
 
-
 @user_passes_test(lambda u: u.is_superuser or u.is_teacher)
 def course_update(request, pk):
     course = get_object_or_404(Courses, pk=pk)

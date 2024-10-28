@@ -3,7 +3,6 @@ from django.db import models
 from teacher.models import Teachers
 from student.models import Students
 
-
 class CourseCategories(models.Model):
     name = models.CharField(max_length=100)
 
@@ -17,7 +16,6 @@ class Courses(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class CourseTeacher(models.Model):
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
