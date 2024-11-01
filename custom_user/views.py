@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import CustomUserCreattionForm, CustomUserUpdateForm
+from .forms import CustomUserCreationForm, CustomUserUpdateForm
 from .models import  CustomUser
 
 def home(request):
@@ -9,7 +9,7 @@ def home(request):
 
 # def register(request):
 #     if request.method=='POST':
-#         form=CustomUserCreattionForm(request.POST)
+#         form=CustomUserCreationForm(request.POST)
 #         if form.is_valid():
 #             user = form.save(commit=False)
 
@@ -17,7 +17,7 @@ def home(request):
 
 #             user.role = role
 #             user.save()
-#             messages.seccess(request, "registeration seccessful.")
+#             messages.success(request, "registration successful.")
 #             # if role == 'family':
 #             #     related_student_id = request.POST.get('related_student')
 #             #     related_student = Students.objects.get(id=related_student_id)
@@ -25,7 +25,7 @@ def home(request):
 #             # login(request, user)
 #             return redirect('login')
 #     else:
-#         form=CustomUserCreattionForm()
+#         form=CustomUserCreationForm()
     
 #     return render(request, 'custom_user/register.html', {'form': form})
 
@@ -33,7 +33,7 @@ from django.contrib import messages  # Make sure to import this for success mess
 
 def register(request):
     if request.method == 'POST':
-        form = CustomUserCreattionForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
 
@@ -43,7 +43,7 @@ def register(request):
 
             return redirect('login')
     else:
-        form = CustomUserCreattionForm()
+        form = CustomUserCreationForm()
 
     return render(request, 'custom_user/register.html', {'form': form})
 

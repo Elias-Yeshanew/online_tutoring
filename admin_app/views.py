@@ -2,8 +2,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404, redirect
 from custom_user.models import CustomUser
-from custom_user.forms import CustomUserCreattionForm
-
+from custom_user.forms import CustomUserCreationForm
 
 User = get_user_model()
 

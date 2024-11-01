@@ -13,8 +13,7 @@ class LessonForm(forms.ModelForm):
     class Meta:
         model = Lesson
         # fields = "__all__"
-        fields = ['course', 'title', 'content', 'vidio_url', 'order']
+        fields = ['course', 'title', 'content', 'video_url', 'order']
 
-    
     def __init__(self, *args, **kwargs):
         super(LessonForm, self).__init__(*args, **kwargs)

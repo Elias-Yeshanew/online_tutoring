@@ -33,7 +33,7 @@ class Lesson(models.Model):
     course = models.ForeignKey(CourseTeacher,  on_delete=models.CASCADE, related_name = "lessons")
     title = models.CharField(max_length=50)
     content = models.TextField()
-    vidio_url = models.URLField(blank = True, null=True)
+    video_url = models.URLField(blank = True, null=True)
     order = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True) 

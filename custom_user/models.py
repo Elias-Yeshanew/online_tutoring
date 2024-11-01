@@ -21,12 +21,13 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
         return self.create_user(email, password, **extra_fields)
 
-    
-
 class CustomUser(AbstractUser):
     is_admin=models.BooleanField(default=False)
     is_teacher=models.BooleanField(default=False)
     is_student=models.BooleanField(default=False)
     is_family=models.BooleanField(default=False)
+
+    profilePicture = models.ImageField(upload_to = 'profile_pictures/', null= True, blank=True)
+    phoneNumber = models.CharField(max_length = 13, blank=True)
 
     objects= CustomUserManager()
